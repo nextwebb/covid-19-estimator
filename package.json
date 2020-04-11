@@ -5,9 +5,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/",
-    "start": "node  ./src/estimator",
-    "watch": "nodemon  ./src/playground.js"
+    "lint": "eslint ./src/"
   },
   "dependencies": {
     "nodemon": "^2.0.3",
