@@ -9,8 +9,8 @@ const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
   const { reportedCases } = data;
-  const { timeToElapse } = data;
-  const roundedDown = (timeToElapse / 3);
+  // const { timeToElapse } = data;
+  const roundedDown = (30 / 3);
   const power = Math.floor(roundedDown);
   impact.currentlyInfected = (reportedCases * 10);
   // eslint-disable-next-line no-restricted-properties
@@ -19,7 +19,6 @@ const covid19ImpactEstimator = (data) => {
   severeImpact.currentlyInfected = (reportedCases * 50);
   // eslint-disable-next-line no-restricted-properties
   severeImpact.infectionsByRequestedTime = (severeImpact.currentlyInfected * Math.pow(2, power));
-
 
   const input = data;
   return {

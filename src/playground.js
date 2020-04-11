@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 // import data from './data';
 
 const data = require('./data');
@@ -8,8 +9,8 @@ const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
   const { reportedCases } = data;
-  const { timeToElapse } = data;
-  const roundedDown = (timeToElapse / 3);
+  // const { timeToElapse } = data;
+  const roundedDown = (30 / 3);
   const power = Math.floor(roundedDown);
   impact.currentlyInfected = (reportedCases * 10);
   // eslint-disable-next-line no-restricted-properties
@@ -26,6 +27,7 @@ const covid19ImpactEstimator = (data) => {
     severeImpact
   };
 };
+
 const output = covid19ImpactEstimator(data);
 // eslint-disable-next-line no-console
 console.log(output);

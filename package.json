@@ -6,7 +6,8 @@
   "private": false,
   "scripts": {
     "lint": "eslint ./src/",
-    "start": "nodemon  ./src/estimator"
+    "start": "node  ./src/estimator",
+    "watch": "nodemon  ./src/playground.js"
   },
   "dependencies": {
     "nodemon": "^2.0.3",
