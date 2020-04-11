@@ -8,9 +8,9 @@ const covid19ImpactEstimator = (data) => {
   if (periodType === 'days') {
     normalizedDuration = Math.floor(timeToElapse / 3); // rounddown duration
   } else if (periodType === 'weeks') {
-    normalizedDuration = Math.floor(((timeToElapse / 7) / 3)); // rounddown duration
+    normalizedDuration = Math.floor(((timeToElapse * 7) / 3)); // rounddown duration
   } else {
-    normalizedDuration = Math.floor(((timeToElapse / 30) / 3)); // roundown duration
+    normalizedDuration = Math.floor(((timeToElapse * 30) / 3)); // roundown duration
   }
 
   // impact
