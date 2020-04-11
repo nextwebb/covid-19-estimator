@@ -5,9 +5,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "lint": "eslint ./src/"
+    "lint": "eslint ./src/",
+    "start": "nodemon  ./src/estimator.js"
   },
   "dependencies": {
+    "nodemon": "^2.0.3",
     "on-covid-19": "^0.1.3"
   },
   "devDependencies": {
