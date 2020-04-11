@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-unused-vars
-import data from './data';
+// import data from './data';
 
-// const data = require('./data');
+const data = require('./data');
 
 // eslint-disable-next-line no-shadow
 const covid19ImpactEstimator = (data) => {
@@ -20,7 +19,6 @@ const covid19ImpactEstimator = (data) => {
   // eslint-disable-next-line no-restricted-properties
   severeImpact.infectionsByRequestedTime = (severeImpact.currentlyInfected * Math.pow(2, power));
 
-
   const input = data;
   return {
     data: input,
@@ -28,11 +26,10 @@ const covid19ImpactEstimator = (data) => {
     severeImpact
   };
 };
-
-// const output = covid19ImpactEstimator(data);
+const output = covid19ImpactEstimator(data);
 // eslint-disable-next-line no-console
-// console.log(output);
+console.log(output);
 
 
-// module.exports = covid19ImpactEstimator;
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
+// export default covid19ImpactEstimator;

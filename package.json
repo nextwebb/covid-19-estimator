@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "lint": "eslint ./src/",
-    "start": "nodemon  ./src/estimator.js"
+    "start": "nodemon  ./src/estimator"
   },
   "dependencies": {
     "nodemon": "^2.0.3",
