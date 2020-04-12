@@ -1,6 +1,6 @@
 const covid19ImpactEstimator = (data) => {
   // impact && severe Impact
-  const { reportedCases, timeToElapse, periodType } = data;
+  const { reportedCases, timeToElapse, periodType, totalHospitalBeds } = data;
   let normalizedDuration;
   // eslint-disable-next-line no-unused-vars
   let period; // period in days, weeks or months
@@ -17,22 +17,33 @@ const covid19ImpactEstimator = (data) => {
   const impactCurrentlyInfected = (reportedCases * 10);
   // eslint-disable-next-line no-restricted-properties
   const impactInfectionsByRequestedTime = (impactCurrentlyInfected * (2 ** normalizedDuration));
+  const impactCasesByRequestedTime = (0.15 * impactInfectionsByRequestedTime);
+  const impactAvailableBeds = (0.35 * totalHospitalBeds);
+  // eslint-disable-next-line max-len
+  const impactHospitalBedsByRequetedTime = (totalHospitalBeds - impactAvailableBeds - impactCasesByRequestedTime);
 
-
-  // severImpact
+  // severeImpact
   const severeImpactCurrentlyInfected = (reportedCases * 50);
   // eslint-disable-next-line max-len
   const severeImpactInfectionsByRequestedTime = (severeImpactCurrentlyInfected * (2 ** normalizedDuration));
+  const severeImpactCasesByRequestedTime = (0.15 * severeImpactInfectionsByRequestedTime);
+  const severeImpactAvailableBeds = (0.35 * totalHospitalBeds);
+  // eslint-disable-next-line max-len
+  const severeImpacthospitalBedsByRequetedTime = (totalHospitalBeds - severeImpactAvailableBeds - severeImpactCasesByRequestedTime);
 
   // estimation output for impact
   const impact = {
     currentlyInfected: impactCurrentlyInfected,
-    infectionsByRequestedTime: impactInfectionsByRequestedTime
+    infectionsByRequestedTime: impactInfectionsByRequestedTime,
+    severeCasesByRequestedTime: impactCasesByRequestedTime,
+    hospitalBedsByRequetedTime: impactHospitalBedsByRequetedTime
   };
   // extimation output for SevereImpact
   const severeImpact = {
     currentlyInfected: severeImpactCurrentlyInfected,
-    infectionsByRequestedTime: severeImpactInfectionsByRequestedTime
+    infectionsByRequestedTime: severeImpactInfectionsByRequestedTime,
+    severeCasesByRequestedTime: severeImpactCasesByRequestedTime,
+    hospitalBedsByRequetedTime: severeImpacthospitalBedsByRequetedTime
   };
 
   const input = data;
