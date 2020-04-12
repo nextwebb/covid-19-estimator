@@ -1,6 +1,8 @@
 const covid19ImpactEstimator = (data) => {
   // impact && severe Impact
-  const { reportedCases, timeToElapse, periodType, totalHospitalBeds } = data;
+  const {
+    reportedCases, timeToElapse, periodType, totalHospitalBeds
+  } = data;
   let normalizedDuration;
   // eslint-disable-next-line no-unused-vars
   let period; // period in days, weeks or months
