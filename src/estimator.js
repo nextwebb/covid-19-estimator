@@ -23,15 +23,10 @@ const covid19ImpactEstimator = (data) => {
   const impactInfectionsByRequestedTime = (impactCurrentlyInfected * (2 ** normalizedDuration));
 
   // challenge 2
-  const impactCasesByRequestedTime = (0.15 * impactInfectionsByRequestedTime);
+  const impactCasesByRequestedTime = Math.trunc(0.15 * impactInfectionsByRequestedTime);
   const impactAvailableBeds = (0.35 * totalHospitalBeds);
   // eslint-disable-next-line max-len
-  let impactHospitalBedsByRequetedTime = (impactAvailableBeds - impactCasesByRequestedTime);
-  if (impactHospitalBedsByRequetedTime > 0) {
-    impactHospitalBedsByRequetedTime = Math.floor(impactHospitalBedsByRequetedTime);
-  } else {
-    impactHospitalBedsByRequetedTime = Math.ceil(impactHospitalBedsByRequetedTime);
-  }
+  const impactHospitalBedsByRequetedTime = Math.trunc(impactAvailableBeds - impactCasesByRequestedTime);
 
   // severeImpact
 
@@ -41,15 +36,10 @@ const covid19ImpactEstimator = (data) => {
   const severeImpactInfectionsByRequestedTime = (severeImpactCurrentlyInfected * (2 ** normalizedDuration));
 
   // challenge 2
-  const severeImpactCasesByRequestedTime = (0.15 * severeImpactInfectionsByRequestedTime);
+  const severeImpactCasesByRequestedTime = Math.trunc(0.15 * severeImpactInfectionsByRequestedTime);
   const severeImpactAvailableBeds = (0.35 * totalHospitalBeds);
   // eslint-disable-next-line max-len
-  let severeImpactHospitalBedsByRequetedTime = (severeImpactAvailableBeds - severeImpactCasesByRequestedTime);
-  if (severeImpactHospitalBedsByRequetedTime > 0) {
-    severeImpactHospitalBedsByRequetedTime = Math.floor(severeImpactHospitalBedsByRequetedTime);
-  } else {
-    severeImpactHospitalBedsByRequetedTime = Math.ceil(severeImpactHospitalBedsByRequetedTime);
-  }
+  const severeImpactHospitalBedsByRequetedTime = Math.trunc(severeImpactAvailableBeds - severeImpactCasesByRequestedTime);
 
   // estimation output for impact
   const impact = {
