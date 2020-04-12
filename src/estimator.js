@@ -16,9 +16,13 @@ const covid19ImpactEstimator = (data) => {
   }
 
   // impact
+
+  // challenge 1
   const impactCurrentlyInfected = (reportedCases * 10);
   // eslint-disable-next-line no-restricted-properties
   const impactInfectionsByRequestedTime = (impactCurrentlyInfected * (2 ** normalizedDuration));
+
+  // challenge 2
   const impactCasesByRequestedTime = (0.15 * impactInfectionsByRequestedTime);
   const impactAvailableBeds = (0.35 * totalHospitalBeds);
   // eslint-disable-next-line max-len
@@ -30,32 +34,36 @@ const covid19ImpactEstimator = (data) => {
   }
 
   // severeImpact
+
+  // challenge 1
   const severeImpactCurrentlyInfected = (reportedCases * 50);
   // eslint-disable-next-line max-len
   const severeImpactInfectionsByRequestedTime = (severeImpactCurrentlyInfected * (2 ** normalizedDuration));
+
+  // challenge 2
   const severeImpactCasesByRequestedTime = (0.15 * severeImpactInfectionsByRequestedTime);
   const severeImpactAvailableBeds = (0.35 * totalHospitalBeds);
   // eslint-disable-next-line max-len
-  let severeImpacthospitalBedsByRequetedTime = (severeImpactAvailableBeds - severeImpactCasesByRequestedTime);
-  if (severeImpacthospitalBedsByRequetedTime > 0) {
-    severeImpacthospitalBedsByRequetedTime = Math.floor(severeImpacthospitalBedsByRequetedTime);
+  let severeImpactHospitalBedsByRequetedTime = (severeImpactAvailableBeds - severeImpactCasesByRequestedTime);
+  if (severeImpactHospitalBedsByRequetedTime > 0) {
+    severeImpactHospitalBedsByRequetedTime = Math.floor(severeImpactHospitalBedsByRequetedTime);
   } else {
-    severeImpacthospitalBedsByRequetedTime = Math.ceil(severeImpacthospitalBedsByRequetedTime);
+    severeImpactHospitalBedsByRequetedTime = Math.ceil(severeImpactHospitalBedsByRequetedTime);
   }
 
   // estimation output for impact
   const impact = {
     currentlyInfected: impactCurrentlyInfected,
     infectionsByRequestedTime: impactInfectionsByRequestedTime,
-    severeCasesByRequestedTime: impactCasesByRequestedTime,
-    hospitalBedsByRequetedTime: impactHospitalBedsByRequetedTime
+    hospitalBedsByRequetedTime: impactHospitalBedsByRequetedTime,
+    severeCasesByRequestedTime: impactCasesByRequestedTime
   };
   // extimation output for SevereImpact
   const severeImpact = {
     currentlyInfected: severeImpactCurrentlyInfected,
     infectionsByRequestedTime: severeImpactInfectionsByRequestedTime,
-    severeCasesByRequestedTime: severeImpactCasesByRequestedTime,
-    hospitalBedsByRequetedTime: severeImpacthospitalBedsByRequetedTime
+    hospitalBedsByRequetedTime: severeImpactHospitalBedsByRequetedTime,
+    severeCasesByRequestedTime: severeImpactCasesByRequestedTime
   };
 
   const input = data;
